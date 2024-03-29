@@ -1,33 +1,55 @@
+
+//  ΤΟ ΤΡΕΧΟΥΜΕ ΜΕ ng serve ΣΤΟ TERMINAL, ΟΝΤΑΣ ΣΤΟΝ ΦΑΚΕΛΟ ΤΟΥ PROJECT
+// ΠΗΓΑΙΝΩ ΣΤΟΝ BROWSER: http://localhost:4200/
+ 
+//***εδώ είναι ο controller στο μοντέλο MVC***//
+ 
+// Καθε component που φτιάχνουμε με ng generate component
+// είναι μία κλάση
+ 
 import { Component } from '@angular/core';
 import { PersonTableComponent } from './components/person-table/person-table.component';
 import { Person } from './shared/interfaces/person';
+import { EventBindExampleComponent } from './components/event-bind-example/event-bind-example.component';
  
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PersonTableComponent],
+  imports: [PersonTableComponent, EventBindExampleComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+ 
 })
+ 
 export class AppComponent {
-  name = 'Nikos'; //Data binding me to html arxeio
+  name='Tonia';
  
-  person0 =  {
-    givenName: 'Nikos',
-    surName: 'Ioannou',
-    age: 25,
-    email: 'nikosioannoy@aueb.gr',
-    address: 'Preveza, Greece'
-  }
+  // το μεταφέρουμε στο person-table-component.ts:
+  //
+  // person = {
+  //   givenName: 'Tonia',
+  //   surName: 'Papadogiorgaki',
+  //   age: 115,
+  //   email: 'onetwo@aueb.gr'
+  // }
  
-  person1 =  {
-    givenName: 'Bruh',
-    surName: 'Bruhson',
-    age: 25,
-    email: 'bruhsonbruh@aueb.gr',
-    address: 'Preveza, Greece'
-  }
+  person0: Person = {
+    givenName: 'Tonia',
+    surName: "Papadogiorgaki",
+    age: 155,
+    email: 'onetwo@aueb.gr',
+    address: 'Athens, Greece'
+  };
  
+  person1: Person = {
+    givenName: 'John',
+    surName: "Doe",
+    age: 75,
+    email: 'doe@aueb.gr',
+    address: 'New York, USA'
+  };
+ 
+  // array από Person:
   users: Person[] = [
     {
       givenName: 'John',
@@ -99,6 +121,7 @@ export class AppComponent {
       email: 'june.davis@example.com',
       address: '654 Pine St',
     },
-  ];
+  ]
  
 }
+ 

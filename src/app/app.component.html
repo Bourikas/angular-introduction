@@ -1,20 +1,26 @@
 <div class="container">
-  <h3>S.A.G.A.P.O.</h3>
-  <p>Μωρή <strong>{{name}}</strong>! θα γεράσουμε μαζί.</p>
+  <h3>Welcome to Angular</h3>
+  <p>
+    Hello <strong>{{ name }}</strong
+    >! Nice to meet you.
+  </p>
 
- 
+  <app-event-bind-example></app-event-bind-example>
+
+  <!-- <h4>Component Input Example</h4>
+
   <div class="d-flex gap-5 text-nowrap">
     <app-person-table [person]="person0"></app-person-table>
     <app-person-table></app-person-table>
     <app-person-table [person]="person1"></app-person-table>
   </div>
 
-  <h4>{{'@for' }} Directive example</h4>
+  <h4>{{ "@for" }} Directive Example</h4>
 
   <div class="d-flex flex-wrap text-nowrap gap-2">
-    @for(user of users; track user){
-      <app-person-table [person]='user'></app-person-table>
+    @for (user of users; track user) {
+      <app-person-table [person]="user"></app-person-table>
     }
   </div>
+</div> -->
 </div>
-      
