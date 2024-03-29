@@ -12,5 +12,22 @@ import { PersonTableComponent } from './components/person-table/person-table.com
 export class AppComponent {
   name = 'Bourikas';
   marilisa = 'Κάμπια';
+  person0 = {  
+    givenName: 'Μαριλιζα',
+    surName: 'Ioannou',
+    age: 25,
+    email: 'nikosioannoy@aueb.gr',
+    address: "athens, greece"
+  }
+
+
+person1 =  {
+    givenName: 'Μαριλιζα',
+    surName: 'Ioannou',
+    age: 25,
+    email: 'nikosioannoy@aueb.gr',
+    address: "athens, greece"
+  }
   
 }
+
