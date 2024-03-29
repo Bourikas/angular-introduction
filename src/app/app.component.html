@@ -1,6 +1,6 @@
 <div class="container">
   <h3>S.A.G.A.P.O.</h3>
-  <p>Μωρή <strong>{{marilisa}}</strong>! θα γεράσουμε μαζί.</p>
+  <p>Μωρή <strong>{{name}}</strong>! θα γεράσουμε μαζί.</p>
 
  
   <div class="d-flex gap-5 text-nowrap">
@@ -9,5 +9,12 @@
     <app-person-table [person]="person1"></app-person-table>
   </div>
 
+  <h4>{{'@for' }} Directive example</h4>
+
+  <div class="d-flex flex-wrap text-nowrap gap-2">
+    @for(user of users; track user){
+      <app-person-table [person]='user'></app-person-table>
+    }
+  </div>
 </div>
       
