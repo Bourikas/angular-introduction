@@ -7,8 +7,8 @@ import { ManyPerson } from 'src/app/shared/interfaces/person';
   standalone: true,
   imports: [SimpleDatatableComponent],
   templateUrl: './simple-datatable-example.component.html',
-  styleUrl: './simple-datatable-example.component.css'
+  styleUrl: './simple-datatable-example.component.css',
 })
 export class SimpleDatatableExampleComponent {
-  manyperson = ManyPerson
+  manyperson = ManyPerson;
 }

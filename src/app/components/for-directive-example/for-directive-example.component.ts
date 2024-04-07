@@ -7,7 +7,7 @@ import { PersonTableComponent } from '../person-table/person-table.component';
   standalone: true,
   imports: [PersonTableComponent],
   templateUrl: './for-directive-example.component.html',
-  styleUrl: './for-directive-example.component.css'
+  styleUrl: './for-directive-example.component.css',
 })
 export class ForDirectiveExampleComponent {
   users: Person[] = [
@@ -81,7 +81,5 @@ export class ForDirectiveExampleComponent {
       email: 'june.davis@example.com',
       address: '654 Pine St',
     },
-  ]
- 
+  ];
 }
- 

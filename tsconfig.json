@@ -3,8 +3,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "baseUrl": "./",  //εδω αλλαξαμε τον κωδικα για το transpiling να μας τα στειλει στο ./
-    "strict": false,  //αλλαξαμε απο true σε false 
+    "baseUrl": "./",
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
