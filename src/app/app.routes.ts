@@ -35,9 +35,9 @@ export const routes: Routes = [
     path: 'reactive-form-example',
     component: ReactiveFormExampleComponent,
   },
-  { path: '', component: WelcomeComponent },
   {
     path: 'http-client-example',
     component: HttpClientExampleComponent,
   },
+  { path: '', component: WelcomeComponent },
 ];
