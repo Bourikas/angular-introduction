@@ -52,6 +52,23 @@ export class UserRegistrationComponent {
         const message = response.error.msg
         console.log('error registering user')
         this.registrationStatus = {success:false, message}
+      },
+    });
+  }
+
+  check_duplicate_email() {
+    const email = this.form.get('email').value
+
+    this.userService.check_duplicate_email(email).subscribe({
+      next: (response) => {
+        console.log(response.msg);
+        this.form.get('email').setErrors(null);
+      },
+      error: (response) => {
+        const message = response.error.msg;
+        console.log(message);
+        this.form.get('email').setErrors({duplicateEmail: true})
+        
       }
     })
   }
@@ -59,7 +76,7 @@ export class UserRegistrationComponent {
     this.form.reset();
     this.registrationStatus = {
       success: false,
-      message: 'Not attempted yet',
+      message: 'not attempted yet',
     }
   }
 }
