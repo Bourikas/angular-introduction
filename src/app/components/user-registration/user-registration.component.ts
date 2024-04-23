@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { User } from 'src/app/shared/interfaces/user';
@@ -9,55 +14,74 @@ import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-user-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './user-registration.component.html',
-  styleUrl: './user-registration.component.css'
+  styleUrl: './user-registration.component.css',
 })
 export class UserRegistrationComponent {
   userService = inject(UserService);
 
-  registrationStatus: {success: boolean; message: string} = {
+  registrationStatus: { success: boolean; message: string } = {
     success: false,
-    message: 'not attempted yet'
+    message: 'Not attempted yet',
   };
-  form = new FormGroup({
-    givenName: new FormControl('',Validators.required),
-    surName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('',[Validators.required, Validators.minLength(4)]),
-    confirmPassword: new FormControl('',[Validators.required, Validators.minLength(4)]),
-    
-  },
-  this.passwordConfirmValidator,
-);
-  passwordConfirmValidator(form: FormGroup){
-    if (form.get('password').value !== form.get('confirmPassword').value){
-      form.get('confirmPassword').setErrors({passwordMismatch: true});
-      return {passwordMismatch: true}
+
+  form = new FormGroup(
+    {
+      givenName: new FormControl('', Validators.required),
+      surName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+    },
+    this.passwordConfirmValidator,
+  );
+
+  passwordConfirmValidator(form: FormGroup) {
+    if (form.get('password').value !== form.get('confirmPassword').value) {
+      form.get('confirmPassword').setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
     }
-    return{};
+    return {};
   }
-  onSubmit(value:any){
+
+  onSubmit(value: any) {
     console.log(value);
 
-    const user = this.form.value as User
-    delete user['confirmPassword']
+    const user = this.form.value as User;
+    delete user['confirmPassword'];
 
     this.userService.registerUser(user).subscribe({
       next: (response) => {
-        console.log('user registered', response.msg);
-        this.registrationStatus = {success:true, message: response.msg}
+        console.log('User registered', response.msg);
+        this.registrationStatus = { success: true, message: response.msg };
       },
       error: (response) => {
-        const message = response.error.msg
-        console.log('error registering user')
-        this.registrationStatus = {success:false, message}
+        const message = response.error.msg;
+        console.log('Error registering user', message);
+        this.registrationStatus = { success: false, message };
       },
     });
   }
 
+  registerAnotherUser() {
+    this.form.reset();
+    this.registrationStatus = { success: false, message: 'Not attempted yet' };
+  }
+
   check_duplicate_email() {
-    const email = this.form.get('email').value
+    const email = this.form.get('email').value;
 
     this.userService.check_duplicate_email(email).subscribe({
       next: (response) => {
@@ -67,16 +91,8 @@ export class UserRegistrationComponent {
       error: (response) => {
         const message = response.error.msg;
         console.log(message);
-        this.form.get('email').setErrors({duplicateEmail: true})
-        
-      }
-    })
-  }
-  registerAnotherUser(){
-    this.form.reset();
-    this.registrationStatus = {
-      success: false,
-      message: 'not attempted yet',
-    }
+        this.form.get('email').setErrors({ duplicateEmail: true });
+      },
+    });
   }
 }
